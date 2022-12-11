@@ -1,35 +1,39 @@
+//Função para dar submit no formulário e fazer algumas validações
 let inserir = document.querySelector("form");
 inserir.addEventListener("submit" , (e) => {
     e.preventDefault();
 
-    let atividade = obterInfo();
+    let atividades = obterInfo();
 
-    if (atividade != false) {
-        atividades.push(atividade);
+    if (atividades != false) {
+        dados.push(atividades);
     };
 });
 
-let atividades = Array();
+//Declaração do array para salvar os itens que foram inseridos no objeto
+let dados = Array();
 
+//Função para obter o valor do campo de atividades
 const obterInfo = () => {
-    let todoInfo = document.querySelector("#todo-input").value;
+    let atividade = document.querySelector("#todo-input").value;
 
-    if (!valida(todoInfo)) {
+    if (!valida(atividade)) {
         alert (`Preencha todos os campos!`)
         return false
     } else {
-        let atividade = {
-            todoInfo
+        let atividades = {
+            "atividade" : atividade
         };
 
         inserir.reset();
 
-        addDom(atividade);
-        
-        return atividade;
+        addDom(atividades);
+
+        return atividades;
     };
 };
 
+//Validação para saber se o campo de atividades foi preenchido
 const valida = (campo) => {
     if (campo === "") {
         return false;
@@ -38,10 +42,11 @@ const valida = (campo) => {
     }
 };
 
-function addDom (atividade) {
+//Função para adicionar elementos no DOM
+function addDom (atividades) {
     //Texto da atividade
     let nomeAtividade = document.createElement("li");
-    nomeAtividade.innerHTML = `${atividade.todoInfo}`;
+    nomeAtividade.innerHTML = `${atividades.atividade}`;
     nomeAtividade.className = "todo-item";
 
     //Criação icone do botão excluir
@@ -73,4 +78,16 @@ function addDom (atividade) {
     let contList = document.querySelector("#todo-list");
     contList.appendChild(contAtividades);
     contList.className = "todo-list";
+
+    //Funcionalidade botão de excluir
+    btnExcluir.addEventListener("click" , (e) => {
+        let clickExcluir = e.target;
+        let excluir = clickExcluir.parentNode;
+        contList.removeChild(excluir);
+    });
+
+    //Funcionalidade botão de confirmar
+    btnConfirm.addEventListener("click" , (e) => {
+        alert(`Em desenvolvimento...`);
+    });
 };
