@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1A1A1A;
+
+    background: linear-gradient(
+        100deg,
+        #ccc,
+        #1A1A1A
+    );
+
+    min-height: 100vh;
+
+    color: #fff;
+
+}
+
+.formDiv {
+    width: 30%;
+
+    border-radius: 62px;
+
+    background-color: #1A1A1A;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-left: 30%;
+    margin-top: 30vh;
+    padding: 62px;
+}
+
+label {
+    font-weight: bolder;
+    font-size: 24px;
+}
+
+input {
+    border: solid 1px #1A1A1A;
+    border-radius: 6px;
+}
+
+.login {
+    font-weight: bolder;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.login:hover {
+    color: #fff;
+    background-color: #1A1A1A;
+} 
